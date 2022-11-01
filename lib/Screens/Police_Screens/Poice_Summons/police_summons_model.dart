@@ -1,24 +1,22 @@
-
-
 class StationSummonsModel {
   List<Data>? data;
   int? statusCode;
   StationSummonsModel({this.data});
-  StationSummonsModel.statusCode(status){
-  statusCode = status;
-}
+  StationSummonsModel.statusCode(status) {
+    statusCode = status;
+  }
 
   StationSummonsModel.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -91,26 +89,26 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['summons_id'] = this.summonsId;
-    data['offense_id'] = this.offenseId;
-    data['rc_id'] = this.rcId;
-    data['name'] = this.name;
-    data['phone_number'] = this.phoneNumber;
-    data['address'] = this.address;
-    data['date'] = this.date;
-    data['attachment'] = this.attachment;
-    data['station_id'] = this.stationId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['engineno'] = this.engineno;
-    data['registernumber'] = this.registernumber;
-    data['rc_status'] = this.rcStatus;
-    data['pollutionvalidupto'] = this.pollutionvalidupto;
-    data['insurancevalidupto'] = this.insurancevalidupto;
-    data['registrationdate'] = this.registrationdate;
-    data['taxvalidupto'] = this.taxvalidupto;
-    data['phonenumber'] = this.phonenumber;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['summons_id'] = summonsId;
+    data['offense_id'] = offenseId;
+    data['rc_id'] = rcId;
+    data['name'] = name;
+    data['phone_number'] = phoneNumber;
+    data['address'] = address;
+    data['date'] = date;
+    data['attachment'] = attachment;
+    data['station_id'] = stationId;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['engineno'] = engineno;
+    data['registernumber'] = registernumber;
+    data['rc_status'] = rcStatus;
+    data['pollutionvalidupto'] = pollutionvalidupto;
+    data['insurancevalidupto'] = insurancevalidupto;
+    data['registrationdate'] = registrationdate;
+    data['taxvalidupto'] = taxvalidupto;
+    data['phonenumber'] = phonenumber;
     return data;
   }
 }

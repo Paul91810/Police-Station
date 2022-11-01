@@ -11,7 +11,7 @@ import 'package:sidarth_new/Widgets/widgets.dart';
 class PoliceBottomNav extends StatelessWidget {
   final int pageIndex;
 
-  PoliceBottomNav({super.key ,this.pageIndex=0});
+  PoliceBottomNav({super.key, this.pageIndex = 0});
   // PloiceBottomNav({});
   final pages = [
     PoliceHomeScreen(),
@@ -27,10 +27,10 @@ class PoliceBottomNav extends StatelessWidget {
         bottomNavigationBar: PoliceBottomIcons(pageIndex: pageIndex),
         appBar: AppBar(
           shape: const Border(
-              bottom: BorderSide(color: Colors.white, width: 0.5),
-              top: BorderSide(color: Colors.white, width: 0.5),
-              left: BorderSide(color: Colors.white, width: 0.5),
-              right: BorderSide(color: Colors.white, width: 0.5)),
+              bottom: BorderSide(color: Colors.white, width: 0.2),
+              top: BorderSide(color: Colors.white, width: 0.2),
+              left: BorderSide(color: Colors.white, width: 0.2),
+              right: BorderSide(color: Colors.white, width: 0.2)),
           title: Row(
             children: const [
               SizedBox(
@@ -46,7 +46,7 @@ class PoliceBottomNav extends StatelessWidget {
                 width: 20,
               ),
               Text('Police Station',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
             ],
           ),
           actions: [

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sidarth_new/Screens/LoginScreens/addmin_login_Screen/login_controller.dart';
 import 'package:sidarth_new/Screens/LoginScreens/addmin_login_Screen/login_service.dart';
-import 'package:sidarth_new/Screens/Police_Screens/Edit_Profile/edit_profile.dart';
 import 'package:sidarth_new/Widgets/police_bottomNav/bottomnav.dart';
 import 'package:sidarth_new/Widgets/widgets.dart';
 
@@ -24,100 +23,107 @@ class AddminLogin extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Consumer<LoginController>(
-          builder: (context,myModel,child) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Police Station Login',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-                const Divider(
-                  color: Colors.white24,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text1(text: "Username"),
-                SizedBox(
-                  height: 40,
-                  child: TextField(
-                      style: const TextStyle(color: Colors.black),
-                      onChanged: (val){
-                        myModel.changeLogin(val.trim());
-                      },
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: "username",
-                          hintStyle: TextStyle(
-                            color: Colors.black38,
-                          ),
-                          border: OutlineInputBorder())),
-                ),
-                Text1(text: "Password"),
-                SizedBox(
-                  height: 40,
-                  child: TextField(
-                      style: const TextStyle(color: Colors.black),
-                      onChanged: (val){
-                          myModel.changePassword(val.trim());
-                      },
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: "password",
-                          hintStyle: TextStyle(color: Colors.black38),
-                          border: OutlineInputBorder())),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      // updateAnswer(context);
-                      log(myModel.toJson().toString());
-                      if(myModel.loginUser!=null&&myModel.password!=null){
-
-                        // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(context) => PoliceBottomNav() ), (route) => false);
-                        LogoInService server =LogoInService();
-                        server.callLoginService(myModel.toJson()).then((value) async{
-                         if( value.statusCode==null){
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(context) => PoliceBottomNav() ), (route) => false);
-                       final response = await SharedPreferences.getInstance();
-                       await response.setBool('name', true);
-                       await response.setString("station_name",value.data!.stationName.toString());
-                       await response.setString("postoffice",value.data!.place.toString());
-                       await response.setString("pin",value.data!.pin.toString());
-                       await response.setString("phone_number",value.data!.pin.toString());
-                       await response.setString("PS_place",value.data!.pin.toString());
-                         }
-                         else{
-                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  content: Text("You'r password incorrect"),
-));
-                         }
-                        
-                        });
-        log("message");
-
-                      }
-                      else{log(myModel.toJson().toString());}
+        child: Consumer<LoginController>(builder: (context, myModel, child) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Police Station Login',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              const Divider(
+                color: Colors.white24,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text1(text: "UserName"),
+              SizedBox(
+                height: 40,
+                child: TextField(
+                    style: const TextStyle(color: Colors.black),
+                    onChanged: (val) {
+                      myModel.changeLogin(val.trim());
                     },
-                    child: const Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ))
-              ],
-            );
-          }
-        ),
+                    decoration: const InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: "username",
+                        hintStyle: TextStyle(
+                          color: Colors.black38,
+                        ),
+                        border: OutlineInputBorder())),
+              ),
+              Text1(text: "PassWord"),
+              SizedBox(
+                height: 40,
+                child: TextField(
+                    style: const TextStyle(color: Colors.black),
+                    onChanged: (val) {
+                      myModel.changePassword(val.trim());
+                    },
+                    decoration: const InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: "password",
+                        hintStyle: TextStyle(color: Colors.black38),
+                        border: OutlineInputBorder())),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    // updateAnswer(context);
+                    log(myModel.toJson().toString());
+                    if (myModel.loginUser != null && myModel.password != null) {
+                      // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(context) => PoliceBottomNav() ), (route) => false);
+                      LogoInService server = LogoInService();
+                      server
+                          .callLoginService(myModel.toJson())
+                          .then((value) async {
+                        if (value.statusCode == null) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => PoliceBottomNav()),
+                              (route) => false);
+                          final response =
+                              await SharedPreferences.getInstance();
+                          await response.setBool('name', true);
+                          await response.setString("station_name",
+                              value.data!.stationName.toString());
+                          await response.setString(
+                              "postoffice", value.data!.place.toString());
+                          await response.setString(
+                              "pin", value.data!.pin.toString());
+                          await response.setString(
+                              "phone_number", value.data!.pin.toString());
+                          await response.setString(
+                              "PS_place", value.data!.pin.toString());
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text("You'r password incorrect"),
+                          ));
+                        }
+                      });
+                      log("message");
+                    } else {
+                      log(myModel.toJson().toString());
+                    }
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Login',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ))
+            ],
+          );
+        }),
       ),
     );
   }

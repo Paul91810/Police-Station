@@ -5,12 +5,13 @@ import 'package:sidarth_new/Screens/User_Screens/numberplate.dart';
 import 'package:sidarth_new/Widgets/User_bottomNav/user_bottom_icons.dart';
 import 'package:sidarth_new/Widgets/widgets.dart';
 import '../../Screens/AddminScreen/addmin_screen.dart';
-import '../../Screens/User_Screens/Usre_Home_Screen/user_home_screen.dart';
 
 class UserBottomNav extends StatelessWidget {
-  UserBottomNav({super.key,});
+  UserBottomNav({
+    super.key,
+  });
   final pages = [Number(), const UserProfile()];
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +19,10 @@ class UserBottomNav extends StatelessWidget {
         bottomNavigationBar: const UserBottomIcons(),
         appBar: AppBar(
           shape: const Border(
-              bottom: BorderSide(color: Colors.white, width: 0.5),
-              top: BorderSide(color: Colors.white, width: 0.5),
-              left: BorderSide(color: Colors.white, width: 0.5),
-              right: BorderSide(color: Colors.white, width: 0.5)),
+              bottom: BorderSide(color: Colors.white, width: 0.2),
+              top: BorderSide(color: Colors.white, width: 0.2),
+              left: BorderSide(color: Colors.white, width: 0.2),
+              right: BorderSide(color: Colors.white, width: 0.2)),
           title: Row(
             children: const [
               SizedBox(
@@ -36,8 +37,8 @@ class UserBottomNav extends StatelessWidget {
               SizedBox(
                 width: 20,
               ),
-              Text('Penalty System',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
+              Text('Penalty system',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
             ],
           ),
           actions: [

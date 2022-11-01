@@ -7,12 +7,12 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               color: Colors.white,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class UserProfile extends StatelessWidget {
                       ],
                     ),
                   ])),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ElevatedButton(

@@ -10,35 +10,31 @@ import 'package:sidarth_new/Screens/User_Screens/Edit_Profile/edit_profile_contr
 import 'Screens/LoginScreens/addmin_login_Screen/login_controller.dart';
 import 'Screens/Police_Screens/Fine Details/fine_controller.dart';
 import 'Screens/Police_Screens/Police_Home_Screen/police_qrcode_scanner.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'Screens/User_Screens/Usre_Home_Screen/User RC details/user_vehicle_number_controller.dart';
 
-Future< void> main()async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MYapp());
 }
 
-
-
 class MYapp extends StatelessWidget {
   const MYapp({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-          ChangeNotifierProvider(create: (_) => EditUserProfile()),
-          ChangeNotifierProvider(create: (_) => PoliceProfileControl()),
-          ChangeNotifierProvider(create: (_) => FineController()),
-          ChangeNotifierProvider(create: (_) => LoginController()),
-          ChangeNotifierProvider(create: (_) => PoliceQrCodeController()),
-          ChangeNotifierProvider(create: (_) => SummonsController()),
-          ChangeNotifierProvider(create: (_) => DocumentController()),
-          ChangeNotifierProvider(create: (_) => FinePaidDetailsService()),
-          ChangeNotifierProvider(create: (_) => UserVehicleNumberController()),
-
+        ChangeNotifierProvider(create: (_) => EditUserProfile()),
+        ChangeNotifierProvider(create: (_) => PoliceProfileControl()),
+        ChangeNotifierProvider(create: (_) => FineController()),
+        ChangeNotifierProvider(create: (_) => LoginController()),
+        ChangeNotifierProvider(create: (_) => PoliceQrCodeController()),
+        ChangeNotifierProvider(create: (_) => SummonsController()),
+        ChangeNotifierProvider(create: (_) => DocumentController()),
+        ChangeNotifierProvider(create: (_) => FinePaidDetailsService()),
+        ChangeNotifierProvider(create: (_) => UserVehicleNumberController()),
       ],
       child: const MaterialApp(home: SplashScreen()),
       // child: const MaterialApp(home: UserPay()),

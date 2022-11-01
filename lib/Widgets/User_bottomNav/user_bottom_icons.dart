@@ -21,7 +21,7 @@ class UserBottomIcons extends StatelessWidget {
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.account_circle), label: "About us"),
+                    icon: Icon(Icons.account_circle), label: "Profile"),
               ]);
         });
   }

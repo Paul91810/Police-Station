@@ -7,11 +7,7 @@ import 'package:sidarth_new/Screens/Police_Screens/Fine%20Details/fine_controlle
 final primaryColor = Color.fromARGB(131, 5, 30, 100);
 
 class MyText2 extends StatelessWidget {
-  MyText2(
-      {super.key,
-      required this.name1,
-      this.width,
-      required this.name2});
+  MyText2({super.key, required this.name1, this.width, required this.name2});
 
   String name1;
   double? width;
@@ -54,10 +50,10 @@ class AppBar12 extends StatelessWidget {
       automaticallyImplyLeading: autoAppbar,
       elevation: 0,
       shape: const Border(
-          bottom: BorderSide(color: Colors.white, width: 0.5),
-          top: BorderSide(color: Colors.white, width: 0.5),
-          left: BorderSide(color: Colors.white, width: 0.5),
-          right: BorderSide(color: Colors.white, width: 0.5)),
+          bottom: BorderSide(color: Colors.white, width: 0.2),
+          top: BorderSide(color: Colors.white, width: 0.2),
+          left: BorderSide(color: Colors.white, width: 0.2),
+          right: BorderSide(color: Colors.white, width: 02)),
       shadowColor: Colors.white,
       backgroundColor: primaryColor,
       title: Row(
@@ -74,9 +70,10 @@ class AppBar12 extends StatelessWidget {
           const SizedBox(
             width: 20,
           ),
-          Text(title,
-              style: const TextStyle(fontSize: 20, color: Colors.white),
-              ),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 17, color: Colors.white),
+          ),
         ],
       ),
     );
@@ -86,39 +83,34 @@ class AppBar12 extends StatelessWidget {
 // DROP DOWN PAGE
 
 class DropButton extends StatelessWidget {
-  DropButton({super.key,required this.onTap});
+  DropButton({super.key, required this.onTap});
   ValueNotifier<List<String>> items = ValueNotifier(["Online", "Offline"]);
-final Function(String? val) onTap;
+  final Function(String? val) onTap;
   String selectedItem = 'Online';
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<FineController>(
-              builder: (context,myModel,child) {
-        return ValueListenableBuilder(
-          valueListenable: items,
-          builder: (BuildContext ctx, List<String> updatedValue, Widget? _) {
-            return DropdownButton<String>(
-              focusColor: Colors.white,
-              value: myModel.modeOfFine,
-              items: myModel.payMode
-                  .map((item) => DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w300),
-                      )))
-                  .toList(),
-              onChanged:onTap,
-              
-              
-               
-            );
-          },
-        );
-      }
-    );
+    return Consumer<FineController>(builder: (context, myModel, child) {
+      return ValueListenableBuilder(
+        valueListenable: items,
+        builder: (BuildContext ctx, List<String> updatedValue, Widget? _) {
+          return DropdownButton<String>(
+            focusColor: Colors.white,
+            value: myModel.modeOfFine,
+            items: myModel.payMode
+                .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.w300),
+                    )))
+                .toList(),
+            onChanged: onTap,
+          );
+        },
+      );
+    });
   }
 }
 

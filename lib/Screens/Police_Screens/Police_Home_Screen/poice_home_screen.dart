@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
-import 'package:sidarth_new/Functions/functions.dart';
 import 'package:sidarth_new/Screens/Police_Screens/Police_Home_Screen/police_qrcode_scanner.dart';
 import 'package:sidarth_new/Screens/Police_Screens/Police_Home_Screen/qrcode_service.dart';
 import 'package:sidarth_new/Screens/Police_Screens/Rc_book/rc_book.dart';
@@ -22,7 +21,7 @@ class PoliceHomeScreen extends StatelessWidget {
             height: 200,
             child: Image.asset("Image/IMG_20220928_155138.png"),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Consumer<PoliceQrCodeController>(builder: (context, myModel, child) {
@@ -65,7 +64,7 @@ class PoliceHomeScreen extends StatelessWidget {
                               ownerName: 'Stefin',
                               pollutionVal: data.pollutionvalidupto.toString(),
                               rcStatus: data.rcStatus,
-                              registrationDate:data.registrationdate,
+                              registrationDate: data.registrationdate,
                               reqAuth: "Thrissur",
                               taxVal: data.taxvalidupto.toString(),
                               vecClass: 'Four wheeler',

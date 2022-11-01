@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sidarth_new/Functions/functions.dart';
 import 'package:sidarth_new/Screens/Police_Screens/Poice_Summons/police_summons_service.dart';
 import 'package:sidarth_new/Widgets/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SummonsNotPaid extends StatelessWidget {
   SummonsNotPaid({super.key});
@@ -24,14 +23,13 @@ class SummonsNotPaid extends StatelessWidget {
                         final response = snapShot.data!.data;
                         if (response![index].attachment == null) {
                           return summonsNotPaid(
-                            context: context,
+                              context: context,
                               date: response[index].date.toString(),
                               name: response[index].name.toString(),
                               offense: response[index].offenseId.toString(),
                               regNo: response[index].registernumber.toString());
-
                         } else {
-                          return SizedBox();
+                          return const SizedBox();
                         }
                       });
                 } else {
@@ -41,13 +39,12 @@ class SummonsNotPaid extends StatelessWidget {
         )));
   }
 
-  Widget summonsNotPaid({
-    required String name,
-    required String date,
-    required String regNo,
-    required String offense,
-    required context
-  }) {
+  Widget summonsNotPaid(
+      {required String name,
+      required String date,
+      required String regNo,
+      required String offense,
+      required context}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Container(
         padding: const EdgeInsets.all(20),
@@ -55,41 +52,36 @@ class SummonsNotPaid extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Name :$name",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Date :$date',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                )
-              ],
+            Text(
+              date,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 15,
             ),
-            MyText2(name1: "Reg No :", width: 53, name2: regNo),
-            MyText2(name1: "Offense :", width: 50, name2: offense),
+            MyText2(name1: 'Name', width: 65, name2: name),
+            MyText2(name1: "Reg No :", width: 50, name2: regNo),
+            MyText2(name1: "Offense :", width: 45, name2: offense),
             // MyText2(name1: "Amount :", width: 53, name2: "1"),
             // MyText2(name1: "Type Of Transaction", width: 20, name2: "1"),
           ],
         ),
       ),
       Container(
-            color: Colors.blue,
-            child: TextButton(
-              onPressed: () {
-                fineNotPaid(context);
-              },
-              child: const Text(
-                "Send As Summons",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          )
+        color: Colors.blue,
+        child: TextButton(
+          onPressed: () {
+            fineNotPaid(context);
+          },
+          child: const Text(
+            "Send As Summons",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      )
     ]);
   }
 }

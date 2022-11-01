@@ -7,15 +7,15 @@ import 'package:sidarth_new/Screens/User_Screens/Usre_Home_Screen/list_of_summon
 import 'package:sidarth_new/Widgets/widgets.dart';
 
 class UserHomeScreen extends StatelessWidget {
-  const UserHomeScreen({super.key,required this.userId});
-final String userId;
+  const UserHomeScreen({super.key, required this.userId});
+  final String userId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
-        child: AppBar12(title: "kl", autoAppbar: true),
+        child: AppBar12(title: "Penalty system", autoAppbar: true),
       ),
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -25,32 +25,35 @@ final String userId;
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Fine(userId:userId,)
+                      builder: (context) => Fine(
+                            userId: userId,
+                          )
                       // amount: amount, name: name, offense: offense, regNo: regNo, typeOfTransaction: typeOfTransaction
                       // ),
-                  ));
+                      ));
                 },
                 child: const Text("PAY FINE")),
-                const SizedBox( 
-              height: 10,
-            ),
-                ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  SummonsList(rcId: userId,)
-                      // amount: amount, name: name, offense: offense, regNo: regNo, typeOfTransaction: typeOfTransaction
-                      // ),
-                  ));
-                },
-                child: const Text("Receive summons")),
             const SizedBox(
               height: 10,
             ),
-            
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Services(),
+                      builder: (context) => SummonsList(
+                            rcId: userId,
+                          )
+                      // amount: amount, name: name, offense: offense, regNo: regNo, typeOfTransaction: typeOfTransaction
+                      // ),
+                      ));
+                },
+                child: const Text("RECEIVE SUMMONS")),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Services(),
                   ));
                 },
                 child: const Text("SERVICES")),
@@ -60,7 +63,7 @@ final String userId;
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => DownLoadRcAndLc(),
+                    builder: (context) => const DownLoadRcAndLc(),
                   ));
                 },
                 child: const Text("DOWNLOAD RC AND LC")),
@@ -70,10 +73,10 @@ final String userId;
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ContactpoliceStation(),
+                    builder: (context) => const ContactpoliceStation(),
                   ));
                 },
-                child: const Text("Contact your police station")),
+                child: const Text("CONTACT YOUR POLICE STATION")),
           ],
         ),
       ),

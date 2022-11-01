@@ -13,18 +13,18 @@ class PoliceStationLoginResponse {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     message = json['message'];
   }
-  PoliceStationLoginResponse.statusCode(statusCodes){
-   statusCode=statusCodes;
+  PoliceStationLoginResponse.statusCode(statusCodes) {
+    statusCode = statusCodes;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['token'] = this.token;
-    data['user_id'] = this.userId;
+    data['token'] = token;
+    data['user_id'] = userId;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }

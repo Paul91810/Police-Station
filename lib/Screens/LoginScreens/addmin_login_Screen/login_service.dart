@@ -1,24 +1,25 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:sidarth_new/Screens/LoginScreens/addmin_login_Screen/policestation_login_responsemodel.dart';
 import 'package:sidarth_new/urls.dart';
 
-class LogoInService{
-  Future<PoliceStationLoginResponse> callLoginService(myModel)async{
+class LogoInService {
+  Future<PoliceStationLoginResponse> callLoginService(myModel) async {
     String uri = policeStationLoginUrl;
-  final response = await http.post(Uri.parse(uri),body: myModel);
-print(response.statusCode);
-  if(response.statusCode==200){
-    print(response.body);
-    // return PoliceStationLoginResponse.fromJson(response.statusCode);
-    
-return PoliceStationLoginResponse.fromJson(json.decode(response.body));  
+    final response = await http.post(Uri.parse(uri), body: myModel);
+    debugPrint(response.statusCode.toString());
+    if (response.statusCode == 200) {
+      debugPrint(response.body);
+      // return PoliceStationLoginResponse.fromJson(response.statusCode);
+
+      return PoliceStationLoginResponse.fromJson(json.decode(response.body));
+    } else {
+      return PoliceStationLoginResponse.statusCode(response.statusCode);
+    }
   }
-  else{
-    return PoliceStationLoginResponse.statusCode(response.statusCode);
-  }
-  }}
+}
 
 // LoginModel loginModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
 
